@@ -13,6 +13,10 @@ st.title('To-Do App')
 st.subheader('This is To-Do App')
 st.write("This app is to increase your productivity")
 
+st.text_input(label="text_input_label", placeholder="Add new todo...",
+              on_change=add_todo, key='new_todo',
+              label_visibility='hidden')
+
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
     if checkbox:
@@ -20,7 +24,3 @@ for index, todo in enumerate(todos):
         functions.write_todos(todos)
         del st.session_state[todo]
         st._rerun()
-
-st.text_input(label="text_input_label", placeholder="Add new todo...",
-              on_change=add_todo, key='new_todo',
-              label_visibility='hidden')
